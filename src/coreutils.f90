@@ -2,7 +2,8 @@ module coreutils
   !! This is the top-level module for the coreutils Fortran library.
   use coreutils__kind, only: real32
 
-  use coreutils__const, only: pi, tau, c, INF, imag
+  use coreutils__const, only: pi, tau, c, INF, imag, k_b, k_b_ev, hbar, hbar_ev, h, &
+       atomic_mass, neutron_mass, electron_mass, elem_charge, avogadros, bohrtoang
 
   use coreutils__file, only: file_check, grep, jump, touch
 
