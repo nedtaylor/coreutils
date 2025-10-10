@@ -10,6 +10,7 @@ module coreutils__string
   public :: flagmaker
   public :: to_upper, to_lower
   public :: strip_null
+  public:: count_occ
 
 
 
@@ -190,6 +191,105 @@ contains
     end do
 
   end function strip_null
+!###############################################################################
+
+
+!###############################################################################
+  function count_occ(string, substring) result(num_occ)
+    !! Count occurrences of a substring in a string.
+    !!
+    !! This function counts the number of times a specified substring
+    !! appears within a given string.
+    implicit none
+
+    ! Arguments
+    character(*), intent(in) :: string
+    !! The main string to search within.
+    character(*), intent(in) :: substring
+    !! The substring to count occurrences of.
+
+    ! Local variables
+    integer :: pos, i
+    !! Position and length variables for searching.
+    integer :: num_occ
+    !! Counter for occurrences.
+
+    num_occ = 0
+    pos = 1
+
+    if(len_trim(substring) .eq. 0) then
+       num_occ = 0
+       return
+    end if
+
+    countloop: do
+       i = verify(string(pos:), substring)
+       if(i .eq. 0) exit countloop
+       if( pos .eq. len(string)) exit countloop
+       num_occ = num_occ + 1
+       i = scan(string(pos:), ' ')
+       if( i .eq. 0) exit countloop
+       pos = i + pos - 1
+    end do countloop
+
+  end function count_occ
+!###############################################################################
+
+!###############################################################################
+  subroutine read_cl(full_line, store, fs)
+    !! Read command line into array of strings.
+    !!
+    !! This subroutine reads a full command line string and splits it into
+    !! individual components based on a specified delimiter (default is space).
+    !! The components are stored in an allocatable array of strings.
+    implicit none
+
+    ! Arguments
+    character(*), intent(in) :: full_line
+    !! Full command line string to be split.
+    character(*), allocatable, dimension(:), optional, intent(inout) :: store
+    !! Optional. Array to store the split components.
+    character(*), optional, intent(in) :: fs
+    !! Optional. Delimiter (aka field separator).
+
+    ! Local variables
+    character(len=:),allocatable :: fs_
+    !! Delimiter (aka field separator).
+    character(100),dimension(1000) :: tmp_store
+    !! Temporary storage for split components.
+    integer :: items, pos, k, length
+    !! Number of components, position in string, loop index, length of fs.
+
+    pos = 1
+    items = 0
+    length = 1
+    if(present(fs)) length = len(trim(fs))
+    allocate(character(len=length) :: fs_)
+    if(present(fs)) then
+       fs_ = fs
+    else
+       fs_ = " "
+    end if
+
+    loop: do
+       k = verify( full_line(pos:), fs_ )
+       if( k .eq. 0) exit loop
+       pos = k + pos - 1
+       k = scan( full_line(pos:), fs_ )
+       if( k .eq. 0 ) exit loop
+       items = items + 1
+       tmp_store(items) = full_line( pos : pos + k - 1 )
+       pos = k + pos - 1
+    end do loop
+
+    if(present(store))then
+       if(.not.allocated(store)) allocate(store(items))
+       do k = 1, items
+          store(k) = trim(tmp_store(k))
+       end do
+    end if
+
+  end subroutine read_cl
 !###############################################################################
 
 end module coreutils__string

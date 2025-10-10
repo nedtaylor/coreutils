@@ -11,6 +11,8 @@ module coreutils__array
   public :: sort1D, sort2D, sort_str, sort_str_order
   public :: set, swap
   public :: shuffle
+  public :: quicksort
+  public :: find_closest_loc
 
 
   interface sort1D
@@ -722,6 +724,76 @@ contains
     end do
 
   end subroutine rshuffle
+!###############################################################################
+
+
+!###############################################################################
+  function find_closest_loc(arr, target, mask, above) result(idx)
+    !! Return the closest location in an array to a target value.
+    !!
+    !! If mask is provided, only consider elements where mask is .true.
+    !! If above is .true., only consider elements greater than or equal to target.
+    !! If above is .false., only consider elements less than or equal to target.
+    !! If no valid element is found, idx is returned as 0.
+    implicit none
+
+    ! Arguments
+    real(real32), dimension(:), intent(in) :: arr
+    !! Array to search.
+    real(real32), intent(in) :: target
+    !! Target value.
+    logical, dimension(:), intent(in), optional :: mask
+    !! Optional. Mask to apply to the array.
+    logical, intent(in), optional :: above
+    !! Optional. Boolean whether to only consider elements above the target.
+
+    integer :: idx
+    !! Index of the closest element.
+
+    ! Local variables
+    integer :: i
+    !! Loop index.
+    real(real32) :: closest_diff
+    !! Closest difference found.
+    real(real32) :: current_diff
+    !! Current difference being evaluated.
+    logical :: above_
+    !! Boolean whether to only consider elements above the target.
+    logical :: use_mask
+    !! Boolean whether to use the mask.
+
+
+    idx = 0
+    closest_diff = huge(1.0_real32)
+    above_ = .false.
+      use_mask = .false.
+      if(present(above)) above_ = above
+      if(present(mask)) then
+         if(size(mask).ne.size(arr)) then
+            call stop_program( &
+                 "Error in find_closest_loc: mask size does not match array size." &
+             )
+         end if
+         use_mask = .true.
+      end if
+
+      do i = 1, size(arr)
+         if(use_mask) then
+            if(.not.mask(i)) cycle
+         end if
+         if(above_) then
+            if(arr(i).lt.target) cycle
+         else
+            if(arr(i).gt.target) cycle
+         end if
+         current_diff = abs(arr(i) - target)
+         if(current_diff.lt.closest_diff) then
+            closest_diff = current_diff
+            idx = i
+         end if
+      end do
+
+  end function find_closest_loc
 !###############################################################################
 
 end module coreutils__array
