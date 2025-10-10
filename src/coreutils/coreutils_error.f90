@@ -1,5 +1,5 @@
-module coreutils__io_utils
-  !! Module for handling errors and io calls.
+module coreutils__error
+  !! Module for handling error calls.
   !!
   !! This module provides the expected procedure for stopping a program.
   !! If in testing mode, the stop can be suppressed.
@@ -47,4 +47,4 @@ contains
   end subroutine print_warning
 !###############################################################################
 
-end module coreutils__io_utils
+end module coreutils__error
