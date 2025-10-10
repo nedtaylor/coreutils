@@ -16,8 +16,8 @@ sort: permission-alpha
 author: Ned Thaddeus Taylor
 print_creation_date: true
 creation_date: %Y-%m-%d %H:%M %z
-project_github: https://github.com/nedtaylor/graphstruc
-project_download: https://github.com/nedtaylor/graphstruc/releases
+project_github: https://github.com/nedtaylor/coreutils
+project_download: https://github.com/nedtaylor/coreutils/releases
 github: https://github.com/nedtaylor
 
 {!README.md!}
