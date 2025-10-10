@@ -1,18 +1,17 @@
 [![MIT workflow](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/mit/ "View MIT license")
-[![Latest Release](https://img.shields.io/github/v/release/nedtaylor/corestruc?sort=semver)](https://github.com/nedtaylor/corestruc/releases "View on GitHub")
+[![Latest Release](https://img.shields.io/github/v/release/nedtaylor/coreutils?sort=semver)](https://github.com/nedtaylor/coreutils/releases "View on GitHub")
 [![FPM](https://img.shields.io/badge/fpm-0.12.0-purple)](https://github.com/fortran-lang/fpm "View Fortran Package Manager")
-[![CMAKE](https://img.shields.io/badge/cmake-3.17.5-red)](https://github.com/Kitware/CMake/releases/tag/v3.17.5 "View cmake")
 [![GCC compatibility](https://img.shields.io/badge/gcc-15.1.0-green)](https://gcc.gnu.org/gcc-15/ "View GCC")
 
-# corestruc
+# coreutils
 
 by Ned Thaddeus Taylor
 
-corestruc is a Fortran library that provides some core utilities.
+coreutils is a Fortran library that provides some core utilities.
 
 ---
 
-corestruc is distributed with the following directories:
+coreutils is distributed with the following directories:
 
 | Directory | Description |
 |---|---|
@@ -37,12 +36,12 @@ By opening this file in a browser window, you will be able to view a nagivable d
 Setup
 -----
 
-The corestruc library can be obtained from the git repository.
+The coreutils library can be obtained from the git repository.
 Use the following commands to get started:
 
 ```
-  git clone https://github.com/nedtaylor/corestruc.git
-  cd corestruc
+  git clone https://github.com/nedtaylor/coreutils.git
+  cd coreutils
 ```
 
 
@@ -67,7 +66,7 @@ Run the following command in the repository main directory:
 
 #### Testing with fpm
 
-To check whether corestruc has installed correctly and that the compilation works as expected, the following command can be run:
+To check whether coreutils has installed correctly and that the compilation works as expected, the following command can be run:
 ```
   fpm test
 ```

@@ -1,6 +1,6 @@
 # Contributing Guidelines
 
-Thank you for considering contributing to the corestruc project! We appreciate your time and effort. To ensure a smooth collaboration, please follow the guidelines provided below.
+Thank you for considering contributing to the coreutils project! We appreciate your time and effort. To ensure a smooth collaboration, please follow the guidelines provided below.
 
 Please first discuss potential changes you wish to make to the project via issue (preferably), or email.
 
@@ -28,7 +28,7 @@ Please first discuss potential changes you wish to make to the project via issue
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-[corestruc Code of Conduct](CODE_OF_CONDUCT.md).
+[coreutils Code of Conduct](CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code. Please report unacceptable behavior
 to .
 
@@ -36,11 +36,11 @@ to .
 
 > If you want to ask a question, we assume that you have read the available [Documentation](README.md).
 
-Before you ask a question, it is best to search for existing [Issues](https://github.com/nedtaylor/corestruc/issues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
+Before you ask a question, it is best to search for existing [Issues](https://github.com/nedtaylor/coreutils/issues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
 
 If you then still feel the need to ask a question and need clarification, we recommend the following:
 
-- Open an [Issue](https://github.com/nedtaylor/corestruc/issues/new).
+- Open an [Issue](https://github.com/nedtaylor/coreutils/issues/new).
 - Provide as much context as you can about what you're running into.
 - Provide project and platform versions (nodejs, npm, etc), depending on what seems relevant.
 
@@ -52,7 +52,7 @@ We will then take care of the issue as soon as possible.
 > When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project license.
 
 ### Reporting Bugs
-If you encounter any issues or have suggestions for improvement, please open an [Issue](https://github.com/nedtaylor/corestruc/issues/new) on the repository's issue tracker.
+If you encounter any issues or have suggestions for improvement, please open an [Issue](https://github.com/nedtaylor/coreutils/issues/new) on the repository's issue tracker.
 
 When reporting, please provide as much context as possible and describe the reproduction steps that someone else can follow to recreate the issue on their own.
 This usually includes your code.
@@ -62,20 +62,20 @@ For good bug reports you should isolate the problem and create a reduced test ca
 
 ### Suggesting Enhancements
 
-This section guides you through submitting an enhancement suggestion for corestruc, **including completely new features and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
+This section guides you through submitting an enhancement suggestion for coreutils, **including completely new features and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
 
 <!-- omit in toc -->
 #### Before Submitting an Enhancement
 
 - Make sure that you are using the latest version.
 - Read the compilable documentation carefully and find out if the functionality is already covered.
-- Perform a [search](https://github.com/nedtaylor/corestruc/issues) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
+- Perform a [search](https://github.com/nedtaylor/coreutils/issues) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
 - Find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Keep in mind that we want features that will be useful to the majority of our users and not just a small subset. If you're just targeting a minority of users, consider writing an add-on/plugin library.
 
 
 ### Contributing Code
 
-This guide provides the recommended route to contributing to corestruc:
+This guide provides the recommended route to contributing to coreutils:
 
 1. Fork the repository.
 2. Clone the forked repository to your local machine.
@@ -104,7 +104,7 @@ Follow the [Code Style](#code-style) when contributing code to this project to e
 
 
 ## Contact
-If you have any questions or need further assistance, feel free to contact [Ned Taylor](mailto:n.t.taylor@exeter.ac.uk?subject=corestruc%20-%query).
+If you have any questions or need further assistance, feel free to contact [Ned Taylor](mailto:n.t.taylor@exeter.ac.uk?subject=coreutils%20-%query).
 
 ## License
 This project is licensed under the [MIT License](LICENSE).

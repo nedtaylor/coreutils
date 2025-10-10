@@ -1,9 +1,9 @@
-name = "corestruc"
+name = "coreutils"
 version = "0.1.0"
 license = "license"
 author = "Ned Thaddeus Taylor"
 maintainer = "n.t.taylor@exeter.ac.uk"
-copyright = "Copyright 2025, corestruc contributors"
+copyright = "Copyright 2025, coreutils contributors"
 
 [preprocess]
 [preprocess.cpp]

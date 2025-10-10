@@ -1,4 +1,4 @@
-module corestruc__io_utils
+module coreutils__io_utils
   !! Module for handling errors and io calls.
   !!
   !! This module provides the expected procedure for stopping a program.
@@ -47,4 +47,4 @@ contains
   end subroutine print_warning
 !###############################################################################
 
-end module corestruc__io_utils
+end module coreutils__io_utils
