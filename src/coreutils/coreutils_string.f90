@@ -45,7 +45,11 @@ contains
     if(present(fs)) length=len(trim(fs))
     allocate(character(len=length) :: fs_)
     if(present(fs)) then
-       fs_=trim(fs)
+       if(trim(fs) == " ") then
+          fs_=" "
+       else
+          fs_=trim(fs)
+       end if
     else
        fs_=" "
     end if
