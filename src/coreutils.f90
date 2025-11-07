@@ -17,7 +17,8 @@ module coreutils
   use coreutils__geom, only: get_distance, get_angle, get_dihedral_angle, &
        get_improper_dihedral_angle
 
-  use coreutils__error, only: stop_program, print_warning, test_error_handling
+  use coreutils__error, only: stop_program, print_warning, test_error_handling, &
+       suppress_warnings
 
   implicit none
 
