@@ -25,7 +25,7 @@ contains
     implicit none
 
     ! Arguments
-    character(*) :: line
+    character(*), intent(in) :: line
     !! String to be counted.
     character(*), intent(in), optional :: fs
     !! Optional. Delimiter (aka field separator).
@@ -63,7 +63,6 @@ contains
        if (k.eq.0) exit loop
        pos=k+pos-1
     end do loop
-    icount=items
 
   end function icount
 !###############################################################################
