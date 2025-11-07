@@ -17,7 +17,7 @@ module coreutils__string
 contains
 
 !###############################################################################
-  integer function icount(line,fs)
+  pure function icount(line,fs) result(items)
     !! Count the number of fields separated by specified delimiter.
     !!
     !! This function counts the number of fields separated by a specified
@@ -106,7 +106,7 @@ contains
 
 
 !###############################################################################
-  function to_upper(buffer) result(upper)
+  pure function to_upper(buffer) result(upper)
     !! Convert a string to upper case.
     implicit none
 
@@ -136,7 +136,7 @@ contains
 
 
 !###############################################################################
-  function to_lower(buffer) result(lower)
+  pure function to_lower(buffer) result(lower)
     !! Convert a string to lower case.
     implicit none
 
@@ -166,7 +166,7 @@ contains
 
 
 !###############################################################################
-  function strip_null(buffer) result(stripped)
+  pure function strip_null(buffer) result(stripped)
     !! Strip null characters from a string.
     !!
     !! This is meant for handling strings passed from Python, which gain
@@ -199,7 +199,7 @@ contains
 
 
 !###############################################################################
-  function count_occ(string, substring) result(num_occ)
+  pure function count_occ(string, substring) result(num_occ)
     !! Count occurrences of a substring in a string.
     !!
     !! This function counts the number of times a specified substring
