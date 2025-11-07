@@ -8,6 +8,7 @@ module coreutils__linalg
   private
 
   public :: cross
+  public :: outer_product
   public :: inverse_3x3
 
 
@@ -30,6 +31,29 @@ contains
     cross(3) = a(1) * b(2) - a(2) * b(1)
 
   end function cross
+!###############################################################################
+
+
+!###############################################################################
+  pure function outer_product(a,b) result(c)
+    !! Compute the outer product of two vectors
+    implicit none
+
+    ! Arguments
+    real(real32), dimension(:), intent(in) :: a,b
+    !! Input vectors
+    real(real32), dimension(size(a),size(b)) :: c
+    !! Outer product of the two vectors
+
+    ! Local variables
+    integer :: i,j
+    !! Loop indices
+
+    do concurrent(i = 1:size(a), j = 1:size(b))
+       c(i,j) = a(i) * b(j)
+    end do
+
+  end function outer_product
 !###############################################################################
 
 
