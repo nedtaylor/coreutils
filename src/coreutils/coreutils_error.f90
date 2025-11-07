@@ -5,10 +5,11 @@ module coreutils__error
   !! If in testing mode, the stop can be suppressed.
   implicit none
   logical :: test_error_handling = .false.
+  logical :: suppress_warnings = .false.
 
   private
 
-  public :: test_error_handling
+  public :: test_error_handling, suppress_warnings
   public :: stop_program, print_warning
 
 
@@ -43,7 +44,9 @@ contains
     implicit none
     character(len=*), intent(in) :: message
 
-    write(0,*) 'WARNING: ', trim(message)
+    if(.not.suppress_warnings) then
+       write(0,*) 'WARNING: ', trim(message)
+    end if
   end subroutine print_warning
 !###############################################################################
 
