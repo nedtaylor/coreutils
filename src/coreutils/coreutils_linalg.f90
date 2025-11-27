@@ -10,6 +10,7 @@ module coreutils__linalg
   public :: cross
   public :: outer_product
   public :: inverse_3x3
+  public :: get_transposed_index
 
 
 
@@ -80,6 +81,48 @@ contains
     output(3,3) = +1._real32 / det * (mat(1,1) * mat(2,2) - mat(1,2) * mat(2,1))
 
   end function inverse_3x3
+!###############################################################################
+
+
+!###############################################################################
+  pure function get_transposed_index(shape, idx) result(output)
+    !! Get the transposed index for a given index in a multi-dimensional array
+    implicit none
+
+    ! Arguments
+    integer, intent(in) :: idx
+    !! Index in the original order
+    integer, dimension(:), intent(in) :: shape
+    !! Shape of the multi-dimensional array
+
+    integer :: output
+
+    ! Local variables
+    integer :: i, temp_idx
+    integer, dimension(size(shape)) :: subscripts, transposed_strides
+
+    ! Convert flat index to multi-dimensional subscripts (column-major, 1-based)
+    temp_idx = idx - 1
+    do i = 1, size(shape)
+       subscripts(i) = mod(temp_idx, shape(i)) + 1
+       temp_idx = temp_idx / shape(i)
+    end do
+
+    ! Calculate strides for transposed (row-major) layout
+    ! In row-major, the rightmost dimension varies fastest
+    transposed_strides(size(shape)) = 1
+    do i = size(shape) - 1, 1, -1
+       transposed_strides(i) = transposed_strides(i + 1) * shape(i + 1)
+    end do
+
+    ! Convert subscripts to flat index using transposed strides
+    output = 0
+    do i = 1, size(shape)
+       output = output + (subscripts(i) - 1) * transposed_strides(i)
+    end do
+    output = output + 1
+
+  end function get_transposed_index
 !###############################################################################
 
 end module coreutils__linalg

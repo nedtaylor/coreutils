@@ -11,6 +11,7 @@ program test_linalg
 
   call test_cross(success)
   call test_inverse_3x3(success)
+  call test_get_transposed_index(success)
 
 
   !-----------------------------------------------------------------------------
@@ -57,6 +58,26 @@ contains
          result, expected, 1.E-6_real32, "inverse_3x3", success &
     )
   end subroutine test_inverse_3x3
+
+  subroutine test_get_transposed_index(success)
+    logical, intent(inout) :: success
+    integer :: rows, cols, i, j, transposed_index, expected_index
+
+    rows = 2
+    cols = 3
+
+    do j = 1, cols
+       do i = 1, rows
+          transposed_index = get_transposed_index([rows, cols], i + (j - 1) * rows)
+          expected_index = (i - 1) * cols + j
+          if(transposed_index .ne. expected_index) then
+             write(0,'("Test failed: get_transposed_index(", I0, ",", I0, ") = ", I0, " but expected ", I0)') i, j, transposed_index, expected_index
+             success = .false.
+          end if
+       end do
+    end do
+
+  end subroutine test_get_transposed_index
 
   subroutine assert_almost_equal_vector(actual, expected, tol, message, success)
     real(real32), dimension(:), intent(in) :: actual

@@ -16,6 +16,11 @@ program test_string
   call check_strings(to_lower('AbC'), 'abc')
   call check_strings(to_lower('123'), '123')
 
+  call check_strings(to_camel_case('hello world'), 'HelloWorld')
+  call check_strings(to_camel_case('hello_world'), 'HelloWorld')
+  call check_strings(to_camel_case('hello  world'), 'HelloWorld')
+  call check_strings(to_camel_case('hello__new___world'), 'HelloNewWorld')
+
   call test_icount('abc def ghi', ' ', 3)
   call test_icount('abc   def   ghi', ' ', 3)
   call test_icount('abc,def,ghi', ',', 3)
