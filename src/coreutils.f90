@@ -7,7 +7,9 @@ module coreutils
 
   use coreutils__file, only: file_check, grep, jump, touch
 
-  use coreutils__string, only: to_lower, to_upper, icount, flagmaker, strip_null
+  use coreutils__string, only: &
+       to_camel_case, to_lower, to_upper, &
+       icount, flagmaker, strip_null
 
   use coreutils__array, only: set, swap, shuffle, sort1D, sort2D, sort_str, &
        sort_str_order
