@@ -1,7 +1,13 @@
-message(STATUS "Building tests")
+message(STATUS "Building tests for ${PROJECT_NAME}")
 
-# Automatically find all test files matching test_*.f90
-file(GLOB TEST_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/test_*.f90")
+# Only find test files in THIS project's test directory, not dependencies
+file(GLOB TEST_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/test_*.f90")
+
+# Filter to ensure we only get files from this specific directory
+list(FILTER TEST_SOURCES INCLUDE REGEX "^${CMAKE_CURRENT_SOURCE_DIR}/test_.*\\.f90$")
+
+
+message(STATUS "Test sources found: ${TEST_SOURCES}")
 
 # Build each test
 foreach(test_file ${TEST_SOURCES})
