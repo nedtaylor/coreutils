@@ -42,11 +42,18 @@ if (CMAKE_BUILD_TYPE MATCHES "Debug*" OR CMAKE_BUILD_TYPE MATCHES "Dev*")
   endif()
 endif()
 
-# enable testing
-enable_testing()
+# Only enable testing and options when this is the main project
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+  enable_testing()
 
-# set options for building tests and examples
-option(BUILD_TESTS "Build the unit tests" ON)
+  # set options for building tests and examples
+  option(BUILD_TESTS "Build the unit tests" ON)
+  option(BUILD_EXAMPLES "Build the examples" ON)
+else()
+  # When used as a dependency, disable tests by default
+  set(BUILD_TESTS OFF)
+  set(BUILD_EXAMPLES OFF)
+endif()
 
 # Define the sources
 set(SRC_DIR src)
